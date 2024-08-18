@@ -48,7 +48,7 @@ GenericParameterEditor::GenericParameterEditor(mrta::ParameterManager& parameter
     {
         std::unique_ptr<juce::Label> ptr { std::make_unique<juce::Label>() };
         ptr->setText(p.name, juce::dontSendNotification);
-        ptr->setFont(juce::Font(12.f));
+        ptr->setFont(juce::FontOptions(12.f));
         return ptr;
     });
 
