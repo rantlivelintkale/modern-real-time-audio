@@ -29,7 +29,7 @@ endif()
 
 # Some Linux specific defines (libcurl does not link for whatever reason)
 if (LINUX)
-    set(linux_defines JUCE_USE_CURL=0)
+    set(linux_defines JUCE_USE_CURL=0 JUCE_JACK=1)
 endif()
 
 # Add JUCE
@@ -88,7 +88,7 @@ function(add_plugin target)
         NEEDS_MIDI_INPUT ${AP_SYNTH}
         NEEDS_MIDI_OUTPUT FALSE
         COPY_PLUGIN_AFTER_BUILD TRUE
-	LV2URI urn:${AP_PROD_NAME})
+	LV2URI http://example.com/${AP_PROD_NAME})
     juce_generate_juce_header(${target})
 
     target_sources(${target}
