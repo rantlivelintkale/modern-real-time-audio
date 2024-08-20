@@ -120,6 +120,8 @@ endfunction(add_plugin)
 
 ## Plugin projects
 
+set(dsp_source ${CMAKE_CURRENT_SOURCE_DIR}/projects/DSP)
+
 # add example project
 set(mfrtaa_source ${CMAKE_CURRENT_SOURCE_DIR}/projects/MyFirstRealTimeAudioApp)
 
@@ -134,3 +136,21 @@ add_plugin(mfrtaa
         ${mfrtaa_source}/PluginProcessor.cpp
     INCLUDE_DIRS
         ${mfrtaa_source})
+
+
+# ring mod project
+set(ringmod_source ${CMAKE_CURRENT_SOURCE_DIR}/projects/RingModulator)
+
+add_plugin(ringmod
+    VERSION 0.1.0
+    PLUGIN_NAME "Ring Modulator"
+    PROD_NAME RingModulator
+    PROD_CODE Rmod
+    SYNTH FALSE
+    SOURCES
+        ${ringmod_source}/PluginEditor.cpp
+        ${ringmod_source}/PluginProcessor.cpp
+        ${dsp_source}/RingMod.cpp
+    INCLUDE_DIRS
+        ${dsp_source}
+        ${ringmod_source})
