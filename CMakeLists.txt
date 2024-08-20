@@ -79,7 +79,7 @@ function(add_plugin target)
         MICROPHONE_PERMISSION_ENABLED TRUE
         COMPANY_COPYRIGHT ${company_copyright}
         COMPANY_NAME ${company_name}
-	FORMATS Standalone VST3 AU LV2 Standalone
+        FORMATS Standalone VST3 AU Standalone
         PLUGIN_NAME ${AP_PLUGIN_NAME}
         PLUGIN_MANUFACTURER_CODE ${company_code}
         PLUGIN_CODE ${AP_PROD_CODE}
@@ -87,8 +87,7 @@ function(add_plugin target)
         IS_SYNTH ${AP_SYNTH}
         NEEDS_MIDI_INPUT ${AP_SYNTH}
         NEEDS_MIDI_OUTPUT FALSE
-        COPY_PLUGIN_AFTER_BUILD TRUE
-	LV2URI http://example.com/${AP_PROD_NAME})
+        COPY_PLUGIN_AFTER_BUILD TRUE)
     juce_generate_juce_header(${target})
 
     target_sources(${target}
