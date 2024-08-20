@@ -154,3 +154,21 @@ add_plugin(ringmod
     INCLUDE_DIRS
         ${dsp_source}
         ${ringmod_source})
+
+# parametric eq project
+set(parameq_source ${CMAKE_CURRENT_SOURCE_DIR}/projects/ParametricEQ)
+
+add_plugin(parameq
+    VERSION 0.1.0
+    PLUGIN_NAME "Parametric EQ"
+    PROD_NAME ParametricEQ
+    PROD_CODE Pmeq
+    SYNTH FALSE
+    SOURCES
+        ${parameq_source}/PluginEditor.cpp
+        ${parameq_source}/PluginProcessor.cpp
+        ${dsp_source}/Biquad.cpp
+        ${dsp_source}/ParametricEqualizer.cpp
+    INCLUDE_DIRS
+        ${dsp_source}
+        ${ringmod_source})
