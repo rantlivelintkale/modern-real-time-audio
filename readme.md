@@ -17,6 +17,7 @@ This repository contains code examples and framework to be used along the course
 **Linux**:
  - [Linux JUCE dep.](https://github.com/juce-framework/JUCE/blob/master/docs/Linux%20Dependencies.md)
  - [CMake](https://cmake.org/)
+ - [Linux instructions](readme-linux.md)
 
 **Nice to have**:
  - [VSCode](https://code.visualstudio.com/) - Alternative cross-platform IDE.
