@@ -18,7 +18,7 @@ public:
 
     ~Ramp() { }
 
-    // No default ctor
+    // Default ctor
     Ramp() :
         rampTime { DefaultRampTime }
     { }
