@@ -190,3 +190,23 @@ add_plugin(flanger
     INCLUDE_DIRS
         ${dsp_source}
         ${flanger_source})
+
+# delay project
+set(delay_source ${CMAKE_CURRENT_SOURCE_DIR}/projects/Delay)
+
+add_plugin(delay
+    VERSION 0.1.0
+    PLUGIN_NAME "Delay"
+    PROD_NAME Delay
+    PROD_CODE Dlay
+    SYNTH FALSE
+    SOURCES
+        ${delay_source}/PluginEditor.cpp
+        ${delay_source}/PluginProcessor.cpp
+        ${dsp_source}/DelayLine.cpp
+        ${dsp_source}/Delay.cpp
+        ${dsp_source}/Biquad.cpp
+        ${dsp_source}/ParametricEqualizer.cpp
+    INCLUDE_DIRS
+        ${dsp_source}
+        ${delay_source})
