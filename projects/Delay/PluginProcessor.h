@@ -2,6 +2,7 @@
 
 #include <JuceHeader.h>
 #include "Delay.h"
+#include "Meter.h"
 
 namespace Param
 {
@@ -85,6 +86,8 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
 
     mrta::ParameterManager& getParameterManager() { return parameterManager; }
+    DSP::Meter& getInputMeter() { return inputMeter; }
+    DSP::Meter& getOutputMeter() { return outputMeter; }
 
     //==============================================================================
     juce::AudioProcessorEditor* createEditor() override;
@@ -108,6 +111,8 @@ public:
 private:
     mrta::ParameterManager parameterManager;
     DSP::Delay delay;
+    DSP::Meter inputMeter;
+    DSP::Meter outputMeter;
     DSP::Ramp<float> wetRamp;
     DSP::Ramp<float> dryRamp;
 

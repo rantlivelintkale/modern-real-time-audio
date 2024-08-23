@@ -210,8 +210,11 @@ add_plugin(delay
         ${dsp_source}/Delay.cpp
         ${dsp_source}/Biquad.cpp
         ${dsp_source}/ParametricEqualizer.cpp
+        ${dsp_source}/Meter.cpp
+        ${gui_source}/MeterComponent.cpp
     INCLUDE_DIRS
         ${dsp_source}
+        ${gui_source}
         ${delay_source})
 
 # osc project

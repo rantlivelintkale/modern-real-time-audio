@@ -1,4 +1,5 @@
 #include "PluginProcessor.h"
+#include "Meter.h"
 #include "PluginEditor.h"
 
 #include <algorithm>
@@ -76,6 +77,8 @@ void DelayAudioProcessor::prepareToPlay(double newSampleRate, int samplesPerBloc
     const unsigned int numChannels { static_cast<unsigned int>(std::max(getMainBusNumInputChannels(), getMainBusNumOutputChannels())) };
 
     delay.prepare(newSampleRate, Param::Ranges::TimeMax, numChannels);
+    inputMeter.prepare(newSampleRate, numChannels);
+    outputMeter.prepare(newSampleRate, numChannels);
     wetRamp.prepare(newSampleRate);
     dryRamp.prepare(newSampleRate);
 
@@ -98,6 +101,8 @@ void DelayAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::
     const unsigned int numChannels { static_cast<unsigned int>(buffer.getNumChannels()) };
     const unsigned int numSamples { static_cast<unsigned int>(buffer.getNumSamples()) };
 
+    inputMeter.process(buffer.getArrayOfReadPointers(), numChannels, numSamples);
+
     for (int ch = 0; ch < static_cast<int>(numChannels); ++ch)
         fxBuffer.copyFrom(ch, 0, buffer, ch, 0, static_cast<int>(numSamples));
 
@@ -107,6 +112,8 @@ void DelayAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::
 
     for (int ch = 0; ch < static_cast<int>(numChannels); ++ch)
         buffer.addFrom(ch, 0, fxBuffer, ch, 0, static_cast<int>(numSamples));
+
+    outputMeter.process(buffer.getArrayOfReadPointers(), numChannels, numSamples);
 }
 
 void DelayAudioProcessor::getStateInformation(juce::MemoryBlock& destData)
