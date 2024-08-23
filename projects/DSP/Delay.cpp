@@ -1,5 +1,4 @@
 #include "Delay.h"
-#include "ParametricEqualizer.h"
 
 #include <algorithm>
 #include <cmath>

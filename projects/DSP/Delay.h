@@ -42,7 +42,7 @@ public:
     // Set feedback normalised
     void setFeedback(float feedbackNorm);
 
-    // Set tone frequencyv in Hz
+    // Set tone frequency in Hz
     void setToneFrequency(float toneFreqHz);
 
     // Set distortion in dB

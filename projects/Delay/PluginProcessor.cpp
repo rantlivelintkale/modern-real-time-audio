@@ -17,7 +17,8 @@ static const std::vector<mrta::ParameterInfo> Parameters
 DelayAudioProcessor::DelayAudioProcessor() :
     parameterManager(*this, ProjectInfo::projectName, Parameters),
     delay(Param::Ranges::TimeMax, 2),
-    wetRamp(0.05f)
+    wetRamp(0.05f),
+    dryRamp(0.05f)
 {
     parameterManager.registerParameterCallback(Param::ID::Enabled,
     [this](float newValue, bool force)
