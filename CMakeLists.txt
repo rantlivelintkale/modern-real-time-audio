@@ -121,6 +121,7 @@ endfunction(add_plugin)
 ## Plugin projects
 
 set(dsp_source ${CMAKE_CURRENT_SOURCE_DIR}/projects/DSP)
+set(gui_source ${CMAKE_CURRENT_SOURCE_DIR}/projects/GUI)
 
 # add example project
 set(mfrtaa_source ${CMAKE_CURRENT_SOURCE_DIR}/projects/MyFirstRealTimeAudioApp)
@@ -169,7 +170,9 @@ add_plugin(parameq
         ${parameq_source}/PluginProcessor.cpp
         ${dsp_source}/Biquad.cpp
         ${dsp_source}/ParametricEqualizer.cpp
+        ${gui_source}/MrtaLAF.cpp
     INCLUDE_DIRS
+        ${gui_source}
         ${dsp_source}
         ${ringmod_source})
 
