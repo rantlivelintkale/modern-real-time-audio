@@ -268,3 +268,20 @@ add_plugin(envgen
     INCLUDE_DIRS
         ${dsp_source}
         ${envgen_source})
+
+# state variable filter project
+set(svf_source ${CMAKE_CURRENT_SOURCE_DIR}/projects/StateVariableFilter)
+
+add_plugin(svf
+    VERSION 0.1.0
+    PLUGIN_NAME "State Variable Filter"
+    PROD_NAME StateVariableFilter
+    PROD_CODE Svff
+    SYNTH FALSE
+    SOURCES
+        ${svf_source}/PluginEditor.cpp
+        ${svf_source}/PluginProcessor.cpp
+        ${dsp_source}/StateVariableFilter.cpp
+    INCLUDE_DIRS
+        ${dsp_source}
+        ${svf_source})
