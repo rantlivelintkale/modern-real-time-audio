@@ -251,3 +251,20 @@ add_plugin(midi
     INCLUDE_DIRS
         ${dsp_source}
         ${midi_source})
+
+# envelope generator project
+set(envgen_source ${CMAKE_CURRENT_SOURCE_DIR}/projects/EnvelopeGenerator)
+
+add_plugin(envgen
+    VERSION 0.1.0
+    PLUGIN_NAME "Envelope Generator"
+    PROD_NAME EnvelopeGenerator
+    PROD_CODE Egen
+    SYNTH FALSE
+    SOURCES
+        ${envgen_source}/PluginEditor.cpp
+        ${envgen_source}/PluginProcessor.cpp
+        ${dsp_source}/EnvelopeGenerator.cpp
+    INCLUDE_DIRS
+        ${dsp_source}
+        ${envgen_source})
