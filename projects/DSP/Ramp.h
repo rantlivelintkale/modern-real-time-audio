@@ -56,6 +56,12 @@ public:
             currentValue = targetValue = newTargetValue;
     }
 
+    // Set new ramp time
+    void setRampTime(F newRampTimeSec)
+    {
+        rampTime = std::fmax(newRampTimeSec, 0.f);
+    }
+
     // Apply summing ramp to a single sample in-place
     void applySum(F* buffers, unsigned int numChannels)
     {
