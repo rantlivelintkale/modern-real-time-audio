@@ -16,17 +16,27 @@ SynthVoice::~SynthVoice()
 {
 }
 
+void SynthVoice::setWaveType(Oscillator::OscType type)
+{
+    osc.setType(type);
+}
+
+void SynthVoice::setAttRelTime(float newAttRelTimeMs)
+{
+    ramp.setRampTime(newAttRelTimeMs * 0.001f);
+}
+
 // just check if this is "ours" synth sound
 bool SynthVoice::canPlaySound(SynthesiserSound* ptr)
 {
-    if (auto* p = dynamic_cast<SynthSound*>(ptr))
+    if (dynamic_cast<SynthSound*>(ptr))
         return true;
     return false;
 }
 
 void SynthVoice::startNote(int midiNoteNumber, float velocity, SynthesiserSound*, int)
 {
-    ramp.setTarget(velocity, true);
+    ramp.setTarget(velocity);
     osc.setFrequency(convertMidiNoteToFreq(midiNoteNumber));
 }
 

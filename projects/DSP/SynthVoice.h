@@ -28,11 +28,14 @@ public:
     const SynthVoice& operator=(const SynthVoice&) = delete;
     const SynthVoice& operator=(SynthVoice&&) = delete;
 
+    void setWaveType(Oscillator::OscType type);
+    void setAttRelTime(float newAttRelTimeMs);
+
     bool canPlaySound(SynthesiserSound* ptr) override;
-    void startNote(int midiNoteNumber, float velocity, SynthesiserSound*, int) override;
+    void startNote(int midiNoteNumber, float velocity, SynthesiserSound*, int currentPitchWheelPosition) override;
     void stopNote(float velocity, bool allowTailOff) override;
-    void pitchWheelMoved(int) override;
-    void controllerMoved(int, int) override;
+    void pitchWheelMoved(int newPitchWheelValue) override;
+    void controllerMoved(int controllerNumber, int newControllerValue) override;
     void renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int startSample, int numSamples) override;
 
 private:
