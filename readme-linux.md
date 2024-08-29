@@ -9,7 +9,7 @@ sudo apt install libasound2-dev libjack-jackd2-dev \
     libx11-dev libxcomposite-dev libxcursor-dev libxcursor-dev libxext-dev libxinerama-dev libxrandr-dev libxrender-dev \
     libwebkit2gtk-4.1-dev \
     libglu1-mesa-dev mesa-common-dev \
-    clang cmake
+    clang cmake ninja
 ```
 
 or for RPM based distro (e.g. Fedora):
@@ -21,12 +21,18 @@ sudo dnf install \
     libcurl-devel \
     webkit2gtk4.1-devel \
     alsa-lib-devel pipewire-jack-audio-connection-kit-devel \
-    clang clang-tools-extra cmake
+    clang clang-tools-extra cmake ninja
 ```
 
 If you are on some other distro you can probably figure out the missing libraries by running `./configure.sh` and searching for the missing libraries using your package manager.
 
-Then follow the main instructions for building.
+The default makefiles based build does not support multiple different configurations. Use the following commands to use the ninja multi config build to be able to select different buildtypes (Release/Debug...):
+
+```
+cmake -Bbuild -G'Ninja Multi-Config'
+cmake --build build --target <target>_<format> --config <Debug/Release> -j<number of jobs>
+``` 
+
 
 ## Clangd
 
