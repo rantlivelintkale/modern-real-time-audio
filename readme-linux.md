@@ -52,19 +52,6 @@ For debugging you can use [Pluginval](https://github.com/Tracktion/pluginval/tre
 
 To make the DBG macro work you might need to run the following CMAKE command:
 
-```sh
-cmake -B build -DCMAKE_BUILD_TYPE=Debug
-```
-
-and manually add `JUCE_DEBUG=1` to the `CMakeLists.txt`:
-
-```diff
- if (LINUX)
--    set(linux_defines JUCE_USE_CURL=0 JUCE_JACK=1)
-+    set(linux_defines JUCE_USE_CURL=0 JUCE_JACK=1 JUCE_DEBUG=1)
- endif()
-```
-
 ## LV2
 
 You can enable lv2 by adding it to the `FORMATS` list and adding an `LV2URI` in `CMakeLists.txt`.
